@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+
+    <!-- Player -->
+    <section class="player" aria-label="Music player">
+      <div class="disc" id="disc" aria-hidden="true">
+        <div class="disc-label"><span class="disc-hole"></span></div>
+      </div>
+
+      <div class="track-info">
+        <h1 id="title">Song title</h1>
+        <p id="artist">Artist</p>
+      </div>
+
+      <div class="progress-row">
+        <span id="current-time" class="time">0:00</span>
+        <input type="range" id="progress" class="slider" min="0" max="100" step="0.1" value="0" aria-label="Seek">
+        <span id="duration" class="time">0:00</span>
+      </div>
+
+      <div class="controls">
+        <button id="prev" class="btn" aria-label="Previous song">
+          <svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9.5 12z"/></svg>
+        </button>
+        <button id="play" class="btn btn-play" aria-label="Play">
+          <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="icon-pause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+        <button id="next" class="btn" aria-label="Next song">
+          <svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l10.5-7z"/></svg>
+        </button>
+      </div>
+
+      <div class="extras">
+        <div class="volume">
+          <button id="mute" class="btn btn-small" aria-label="Mute">
+            <svg id="icon-volume" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9zM16.5 12a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+            <svg id="icon-muted" viewBox="0 0 24 24" hidden><path d="M3 9v6h4l5 5V4L7 9zM16 9.4l1.4-1.4 2.6 2.6L22.6 8 24 9.4 21.4 12l2.6 2.6-1.4 1.4-2.6-2.6-2.6 2.6-1.4-1.4 2.6-2.6z"/></svg>
+          </button>
+          <input type="range" id="volume" class="slider" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
+        </div>
+
+        <label class="toggle">
+          <input type="checkbox" id="autoplay" checked>
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span class="toggle-text">Autoplay next</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Playlist -->
+    <aside class="playlist" aria-label="Playlist">
+      <h2>Playlist</h2>
+      <ul id="playlist"></ul>
+    </aside>
+
+  </main>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
